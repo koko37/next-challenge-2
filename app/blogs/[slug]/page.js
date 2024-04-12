@@ -2,7 +2,7 @@ import Link from "next/link";
 import { fetchBlog } from "@/lib/mockApi";
 import { notFound } from "next/navigation";
 
-export default async function BlogArticle({ params: { slug } }) {
+export default async function BlogDetail({ params: { slug } }) {
   const blog = await fetchBlog(slug);
 
   if (!blog) {
@@ -27,7 +27,7 @@ export default async function BlogArticle({ params: { slug } }) {
           Edit
         </Link>
         <span className="mx-2">|</span>
-        <Link href={"/blogs/" + blog.slug} className="text-blue-600 underline">
+        <Link href={"/blogs/" + blog.slug + "/delete"} className="text-blue-600 underline">
           Delete
         </Link>
       </div>

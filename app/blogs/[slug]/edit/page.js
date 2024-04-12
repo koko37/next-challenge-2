@@ -2,7 +2,7 @@ import Link from "next/link";
 import { fetchBlog, updateBlog } from "@/lib/mockApi";
 import { notFound, redirect } from "next/navigation";
 
-export default async function BlogArticle({ params: { slug } }) {
+export default async function EditBlog({ params: { slug } }) {
   const blog = await fetchBlog(slug);
 
   const update = async (formData) => {

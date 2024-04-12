@@ -39,7 +39,7 @@ export default async function Blogs() {
                   </Link>
                   <span className="mx-2">|</span>
                   <Link
-                    href={"/blogs/" + blog.slug}
+                    href={"/blogs/" + blog.slug + "/delete"}
                     className="text-blue-600 underline"
                   >
                     Delete
@@ -52,7 +52,7 @@ export default async function Blogs() {
       </div>
 
       <div className="flex justify-center gap-4 mt-8">
-        <Link href="/publish" className="text-blue-600 underline">
+        <Link href="/blogs/publish" className="text-blue-600 underline">
           New Blog
         </Link>
       </div>

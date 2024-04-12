@@ -19,7 +19,7 @@ export default function Login({ searchParams }) {
   };
 
   return (
-    <div className="w-full mt-4">
+    <div className="max-w-4xl mx-auto mt-8">
       <form
         className="flex flex-col w-full justify-center gap-2"
         action={signIn}

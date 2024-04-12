@@ -2,7 +2,7 @@ import Link from "next/link";
 import { createBlog } from "@/lib/mockApi";
 import { redirect } from "next/navigation";
 
-export default async function BlogArticle() {
+export default async function CreateBlog() {
   const create = async (formData) => {
     "use server";
 
