@@ -19,11 +19,13 @@ export default function Login({ searchParams }) {
   };
 
   return (
-    <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
+    <div className="w-full mt-4">
       <form
-        className="animate-in flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
+        className="flex flex-col w-full justify-center gap-2"
         action={signIn}
       >
+        <h1 className="mb-4 text-center text-xl">Log In</h1>
+
         <label className="text-md" htmlFor="email">
           Email
         </label>

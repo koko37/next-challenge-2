@@ -16,15 +16,19 @@ export default async function BlogArticle({ params: { slug } }) {
       <div>{blog.content}</div>
 
       <div className="flex justify-center gap-4 mt-8">
+        <Link href="/blogs/" className="text-blue-600 underline">
+          Index
+        </Link>
+        <span className="mx-2">|</span>
         <Link
           href={"/blogs/" + blog.slug + "/edit"}
           className="text-blue-600 underline"
         >
-          edit
+          Edit
         </Link>
         <span className="mx-2">|</span>
         <Link href={"/blogs/" + blog.slug} className="text-blue-600 underline">
-          delete
+          Delete
         </Link>
       </div>
     </div>

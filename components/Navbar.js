@@ -10,6 +10,7 @@ export default async function Navbar() {
       <div className="max-w-6xl px-6 mx-auto flex flex-row justify-between align-center">
         <Link href="/"><h1 className="text-xl font-bold">My Blogs</h1></Link>
         <Link href="/blogs" className="text-blue-600">Blogs</Link>
+        <Link href="/about-us" className="text-blue-600">About us</Link>
 
         {!session ? <Link href="/login">Login</Link> : <SignOut />}
       </div>

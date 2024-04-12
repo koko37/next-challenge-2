@@ -1,36 +1,22 @@
 import Link from "next/link";
-import { fetchBlog, updateBlog } from "@/lib/mockApi";
-import { notFound, redirect } from "next/navigation";
+import { createBlog } from "@/lib/mockApi";
+import { redirect } from "next/navigation";
 
-export default async function BlogArticle({ params: { slug } }) {
-  const blog = await fetchBlog(slug);
-
-  const update = async (formData) => {
+export default async function BlogArticle() {
+  const create = async (formData) => {
     "use server";
 
-    await updateBlog(
-      formData.get("id"),
-      formData.get("slug"),
-      formData.get("title"),
-      formData.get("content")
-    );
-    return redirect("/blogs/" + blog.slug);
+    await createBlog(formData.get("title"), formData.get("content"));
+    return redirect("/blogs/");
   };
-
-  if (!blog) {
-    return notFound();
-  }
 
   return (
     <div className="w-full mt-4">
       <form
         className="flex flex-col w-full justify-center gap-2"
-        action={update}
+        action={create}
       >
-        <h1 className="mb-4 text-center text-xl">Edit Blog</h1>
-
-        <input type="hidden" name="id" value={blog.id} />
-        <input type="hidden" name="slug" value={blog.slug} />
+        <h1 className="mb-4 text-center text-xl">Add new Blog</h1>
 
         <label className="text-md" htmlFor="title">
           Title
@@ -40,7 +26,6 @@ export default async function BlogArticle({ params: { slug } }) {
           type="text"
           name="title"
           placeholder="What is Next.js?"
-          defaultValue={blog.title}
           required
         />
         <label className="text-md" htmlFor="title">
@@ -51,15 +36,14 @@ export default async function BlogArticle({ params: { slug } }) {
           name="content"
           rows="3"
           placeholder="Please type the description here."
-          defaultValue={blog.content}
           required
         />
 
         <button className="bg-green-700 rounded-md px-4 py-2 text-foreground mb-2">
-          Update
+          Create
         </button>
 
-        <Link href={"/blogs/" + blog.slug} className="text-center">
+        <Link href="/blogs/" className="text-center">
           Cancel
         </Link>
       </form>

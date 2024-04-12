@@ -1,7 +1,6 @@
 "use server";
-
+import Link from "next/link";
 import { fetchBlogs } from "@/lib/mockApi";
-import Blog from "@/components/Blog";
 
 export default async function Blogs() {
   const blogs = await fetchBlogs();
@@ -21,10 +20,41 @@ export default async function Blogs() {
 
           <tbody>
             {blogs.map((blog) => (
-              <Blog blog={blog} key={blog.id} />
+              <tr key={blog.id}>
+                <td className="p-2">{blog.title}</td>
+                <td className="p-2">{blog.content}</td>
+                <td className="p-2">
+                  <Link
+                    href={"/blogs/" + blog.slug}
+                    className="text-blue-600 underline"
+                  >
+                    View
+                  </Link>
+                  <span className="mx-2">|</span>
+                  <Link
+                    href={"/blogs/" + blog.slug + "/edit"}
+                    className="text-blue-600 underline"
+                  >
+                    Edit
+                  </Link>
+                  <span className="mx-2">|</span>
+                  <Link
+                    href={"/blogs/" + blog.slug}
+                    className="text-blue-600 underline"
+                  >
+                    Delete
+                  </Link>
+                </td>
+              </tr>
             ))}
           </tbody>
         </table>
+      </div>
+
+      <div className="flex justify-center gap-4 mt-8">
+        <Link href="/publish" className="text-blue-600 underline">
+          New Blog
+        </Link>
       </div>
     </div>
   );
