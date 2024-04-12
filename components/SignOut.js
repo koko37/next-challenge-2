@@ -10,7 +10,7 @@ export default async function SignOut() {
 
   return (
     <form action={handleSignOut}>
-      <button>Sign Out</button>
+      <button className="text-blue-600">Sign Out</button>
     </form>
   );
 }

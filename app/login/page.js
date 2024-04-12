@@ -9,11 +9,6 @@ export default function Login({ searchParams }) {
 
     const email = formData.get("email");
     const password = formData.get("password");
-
-    console.log("\nauthenticating ...");
-    console.log("email: ", email);
-    console.log("password: ", password);
-
     const result = await authenticate(email, password);
     if (!result) {
       return redirect("/login?message=Could not authenticate user");
